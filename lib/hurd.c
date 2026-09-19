@@ -342,12 +342,12 @@ hurd_fill_info(struct pci_dev *d, unsigned int flags)
     {
       if (want_fill(d, flags, PCI_FILL_BASES | PCI_FILL_SIZES))
 	{
-	  if (hurd_fill_regions(d))
+	  if (!hurd_fill_regions(d))
 	    clear_fill(d, PCI_FILL_BASES | PCI_FILL_SIZES);
 	}
       if (want_fill(d, flags, PCI_FILL_ROM_BASE))
 	{
-	  if (hurd_fill_rom(d))
+	  if (!hurd_fill_rom(d))
 	    clear_fill(d, PCI_FILL_ROM_BASE);
 	}
     }
